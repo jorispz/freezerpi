@@ -19,8 +19,7 @@ let transporter = nodemailer.createTransport({
     user: env.FPI_USER,
     clientId: env.FPI_CLIENT_ID,
     clientSecret: env.FPI_CLIENT_SECRET,
-    refreshToken: env.FPI_REFRESH_TOKEN,
-    expires: 1484314697598
+    refreshToken: env.FPI_REFRESH_TOKEN
   }
 });
 
