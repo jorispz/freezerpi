@@ -5,6 +5,10 @@
   "author": "Joris Portegies Zwart",
   "license": "MIT",
   "private": true,
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc --watch"
+  },
   "devDependencies": {
     "@types/node": "^10.9.4",
     "@types/nodemailer": "^4.6.5",
