@@ -1,5 +1,33 @@
+import { init } from 'raspi';
+import { PWM } from 'raspi-pwm';
+import { DigitalInput, PULL_UP } from 'raspi-gpio';
 import nodemailer from "nodemailer";
 import envalid, { str, email } from "envalid";
+
+init(() => {
+  const buzzer = new PWM({pin: 'P1-12', frequency: 1200});
+  const door = new DigitalInput({
+    pin: 'P1-16',
+    pullResistor: PULL_UP
+  });
+
+  door.on('change', (value: number) => {
+    if (value === 1) {
+      buzzer.write(.95);
+    } else {
+      buzzer.write(0);
+    }
+  });
+
+  const shutdown = () => {
+    console.log("Shutting down");
+    buzzer.write(0);
+    process.exit();
+  };
+
+  process.on("SIGTERM", shutdown);
+  process.on("SIGINT", shutdown);
+});
 
 const env = envalid.cleanEnv(process.env, {
   FPI_USER: email(),
@@ -10,7 +38,7 @@ const env = envalid.cleanEnv(process.env, {
   FPI_TO: str()
 });
 
-let transporter = nodemailer.createTransport({
+const transporter = nodemailer.createTransport({
   host: "smtp.gmail.com",
   port: 465,
   secure: true,
@@ -41,7 +69,9 @@ var message = {
   html: "<p>It has been open for 123</p>"
 };
 
+/*
 transporter
   .sendMail(message)
   .then(() => console.log(`Message sent to recipients: ${message.to}`))
   .catch(error => console.log(error));
+*/

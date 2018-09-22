@@ -17,6 +17,9 @@
   "dependencies": {
     "envalid": "^4.1.4",
     "googleapis": "^33.0.0",
-    "nodemailer": "^4.6.8"
+    "nodemailer": "^4.6.8",
+    "raspi": "^5.0.2",
+    "raspi-gpio": "^6.0.0",
+    "raspi-pwm": "^6.0.0"
   }
 }
