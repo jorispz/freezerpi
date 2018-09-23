@@ -17,6 +17,12 @@
     "@types/events" "*"
     "@types/node" "*"
 
+"@types/pigpio@^0.4.2":
+  version "0.4.2"
+  resolved "https://registry.yarnpkg.com/@types/pigpio/-/pigpio-0.4.2.tgz#608c2fd188598bb78d31e5c40a0103d70d1ce7a2"
+  dependencies:
+    "@types/node" "*"
+
 ansi-styles@^3.1.0:
   version "3.2.1"
   resolved "https://registry.yarnpkg.com/ansi-styles/-/ansi-styles-3.2.1.tgz#41fbb20243e50b12be0f04b8dedbf07520ce841d"
@@ -212,7 +218,11 @@ pify@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/pify/-/pify-3.0.0.tgz#e5a4acd2c101fdf3d9a4d07f0dbc4db49dd28176"
 
-pigpio@^1.0.0:
+pigpio-mock@^0.0.1:
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/pigpio-mock/-/pigpio-mock-0.0.1.tgz#5e5b3fd74987b6bfcc653b2de1219aeabbb0dcb8"
+
+pigpio@^1.1.2:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/pigpio/-/pigpio-1.1.2.tgz#53f76dfafcab0fe2a934cbc142ce65ee0dd9b034"
   dependencies:
@@ -226,35 +236,6 @@ pseudomap@^1.0.2:
 qs@^6.5.2:
   version "6.5.2"
   resolved "https://registry.yarnpkg.com/qs/-/qs-6.5.2.tgz#cb3ae806e8740444584ef154ce8ee98d403f3e36"
-
-raspi-board@^5.0.0, raspi-board@^5.0.2:
-  version "5.3.1"
-  resolved "https://registry.yarnpkg.com/raspi-board/-/raspi-board-5.3.1.tgz#7677f1b8ddad654a4281622b9207d8a4c55a9765"
-
-raspi-gpio@^6.0.0:
-  version "6.0.0"
-  resolved "https://registry.yarnpkg.com/raspi-gpio/-/raspi-gpio-6.0.0.tgz#babf1c231e322bdd889e469c5f261801aee57117"
-  dependencies:
-    pigpio "^1.0.0"
-    raspi-board "^5.0.2"
-    raspi-peripheral "^2.0.1"
-
-raspi-peripheral@^2.0.1:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/raspi-peripheral/-/raspi-peripheral-2.0.1.tgz#f98032035960982aae911aed7052c6474e531cd9"
-  dependencies:
-    raspi-board "^5.0.0"
-
-raspi-pwm@^6.0.0:
-  version "6.0.0"
-  resolved "https://registry.yarnpkg.com/raspi-pwm/-/raspi-pwm-6.0.0.tgz#e930cb8dbf5949684321fab6831fda4b1a99dd0b"
-  dependencies:
-    pigpio "^1.0.0"
-    raspi-peripheral "^2.0.1"
-
-raspi@^5.0.2:
-  version "5.0.2"
-  resolved "https://registry.yarnpkg.com/raspi/-/raspi-5.0.2.tgz#0c0019b0c996e6247704cc89cd736d34e5e7d4e7"
 
 retry-axios@0.3.2, retry-axios@^0.3.2:
   version "0.3.2"

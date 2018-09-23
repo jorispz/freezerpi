@@ -15,11 +15,13 @@
     "typescript": "^3.0.3"
   },
   "dependencies": {
+    "@types/pigpio": "^0.4.2",
     "envalid": "^4.1.4",
     "googleapis": "^33.0.0",
     "nodemailer": "^4.6.8",
-    "raspi": "^5.0.2",
-    "raspi-gpio": "^6.0.0",
-    "raspi-pwm": "^6.0.0"
+    "pigpio-mock": "^0.0.1"
+  },
+  "optionalDependencies": {
+    "pigpio": "^1.1.2"
   }
 }

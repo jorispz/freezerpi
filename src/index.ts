@@ -1,33 +1,47 @@
-import { init } from 'raspi';
-import { PWM } from 'raspi-pwm';
-import { DigitalInput, PULL_UP } from 'raspi-gpio';
 import nodemailer from "nodemailer";
 import envalid, { str, email } from "envalid";
+import { Gpio } from "pigpio";
 
-init(() => {
-  const buzzer = new PWM({pin: 'P1-12', frequency: 1200});
-  const door = new DigitalInput({
-    pin: 'P1-16',
-    pullResistor: PULL_UP
-  });
+const pigpio: Gpio = (function() {
+  try {
+    return require("pigpio-mock").Gpio;
+  } catch (e) {
+    return require("pigpio").Gpio;
+  }
+})();
 
-  door.on('change', (value: number) => {
-    if (value === 1) {
-      buzzer.write(.95);
-    } else {
-      buzzer.write(0);
-    }
-  });
-
-  const shutdown = () => {
-    console.log("Shutting down");
-    buzzer.write(0);
-    process.exit();
-  };
-
-  process.on("SIGTERM", shutdown);
-  process.on("SIGINT", shutdown);
+const doorSensor = new Gpio(23, {
+  mode: Gpio.INPUT,
+  pullUpDown: Gpio.PUD_UP,
+  edge: Gpio.EITHER_EDGE
 });
+
+doorSensor.on("interrupt", (level: number) => console.log(level));
+
+// init(() => {
+//   const buzzer = new PWM({ pin: "P1-12", frequency: 1200 });
+//   const door = new DigitalInput({
+//     pin: "P1-16",
+//     pullResistor: PULL_UP
+//   });
+
+//   door.on("change", (value: number) => {
+//     if (value === 1) {
+//       buzzer.write(0.95);
+//     } else {
+//       buzzer.write(0);
+//     }
+//   });
+
+//   const shutdown = () => {
+//     console.log("Shutting down");
+//     buzzer.write(0);
+//     process.exit();
+//   };
+
+//   process.on("SIGTERM", shutdown);
+//   process.on("SIGINT", shutdown);
+// });
 
 const env = envalid.cleanEnv(process.env, {
   FPI_USER: email(),
