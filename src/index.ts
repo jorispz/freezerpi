@@ -1,22 +1,13 @@
 import nodemailer from "nodemailer";
 import envalid, { str, email } from "envalid";
-import { Gpio } from "pigpio";
+import { io } from "./gpio";
 
-const pigpio: Gpio = (function() {
-  try {
-    return require("pigpio-mock").Gpio;
-  } catch (e) {
-    return require("pigpio").Gpio;
-  }
-})();
-
-const doorSensor = new Gpio(23, {
-  mode: Gpio.INPUT,
-  pullUpDown: Gpio.PUD_UP,
-  edge: Gpio.EITHER_EDGE
+console.log({ io });
+io.doorSensor.onChange(isOpen => {
+  console.log({ isOpen });
 });
 
-doorSensor.on("interrupt", (level: number) => console.log(level));
+io.buzzer.buzz(0.5, 100);
 
 // init(() => {
 //   const buzzer = new PWM({ pin: "P1-12", frequency: 1200 });
