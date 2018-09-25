@@ -30,6 +30,23 @@
     "@types/events" "*"
     "@types/node" "*"
 
+"@types/raspi-peripheral@*":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@types/raspi-peripheral/-/raspi-peripheral-2.0.0.tgz#a99a20f43a7478ec5bbb8f829ec375f687a6be4b"
+  dependencies:
+    "@types/events" "*"
+    "@types/node" "*"
+
+"@types/raspi-pwm@^6.0.0":
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/@types/raspi-pwm/-/raspi-pwm-6.0.0.tgz#cde46abc660972da594532036c8da666d2156708"
+  dependencies:
+    "@types/raspi-peripheral" "*"
+
+"@types/raspi@^5.0.0":
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/@types/raspi/-/raspi-5.0.0.tgz#37fce90264e8f429ba0ad558e65003c731535eca"
+
 ansi-styles@^3.1.0, ansi-styles@^3.2.1:
   version "3.2.1"
   resolved "https://registry.yarnpkg.com/ansi-styles/-/ansi-styles-3.2.1.tgz#41fbb20243e50b12be0f04b8dedbf07520ce841d"
@@ -312,7 +329,7 @@ pify@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/pify/-/pify-3.0.0.tgz#e5a4acd2c101fdf3d9a4d07f0dbc4db49dd28176"
 
-pigpio@^1.1.2:
+pigpio@^1.0.0, pigpio@^1.1.2:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/pigpio/-/pigpio-1.1.2.tgz#53f76dfafcab0fe2a934cbc142ce65ee0dd9b034"
   dependencies:
@@ -367,6 +384,27 @@ qs@^6.5.2:
 quick-format-unescaped@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/quick-format-unescaped/-/quick-format-unescaped-3.0.0.tgz#21e7fdc5b08b079ef71ed0728ed0725e58671e41"
+
+raspi-board@^5.0.0:
+  version "5.3.1"
+  resolved "https://registry.yarnpkg.com/raspi-board/-/raspi-board-5.3.1.tgz#7677f1b8ddad654a4281622b9207d8a4c55a9765"
+
+raspi-peripheral@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/raspi-peripheral/-/raspi-peripheral-2.0.1.tgz#f98032035960982aae911aed7052c6474e531cd9"
+  dependencies:
+    raspi-board "^5.0.0"
+
+raspi-pwm@^6.0.0:
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/raspi-pwm/-/raspi-pwm-6.0.0.tgz#e930cb8dbf5949684321fab6831fda4b1a99dd0b"
+  dependencies:
+    pigpio "^1.0.0"
+    raspi-peripheral "^2.0.1"
+
+raspi@^5.0.2:
+  version "5.0.2"
+  resolved "https://registry.yarnpkg.com/raspi/-/raspi-5.0.2.tgz#0c0019b0c996e6247704cc89cd736d34e5e7d4e7"
 
 readable-stream@^3.0.0, readable-stream@^3.0.2:
   version "3.0.3"

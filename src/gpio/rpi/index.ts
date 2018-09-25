@@ -1,5 +1,8 @@
-const Gpio: any = require("pigpio").Gpio;
+import { FreezerIO } from "..";
+import { buzzer } from "./buzzer";
+import { doorSensor } from "./door-sensor";
 
-const doorSensor: import("pigpio").Gpio = new Gpio();
-
-throw Error("Unimplemented");
+export const io: FreezerIO = {
+  buzzer,
+  doorSensor
+};
