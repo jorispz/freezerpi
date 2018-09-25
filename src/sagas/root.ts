@@ -4,6 +4,7 @@ import { doorSaga } from "./door";
 import { domotixSaga } from "./domotix";
 import { logger } from "../logger";
 import envalid, { str } from "envalid";
+import { buzzerSaga } from "./buzzer";
 
 const env = envalid.cleanEnv(process.env, {
   FPI_DOMOTIX_URL: str()
@@ -12,9 +13,10 @@ const env = envalid.cleanEnv(process.env, {
 export function* rootSaga() {
   yield fork(domotixSaga, env.FPI_DOMOTIX_URL);
   yield fork(doorSaga);
+  yield fork(buzzerSaga);
   while (true) {
     yield select((state: DoorState) => state.openSince);
     const action = yield take();
-    logger.info(`Action: ${action}`);
+    logger.info(`Action`, action);
   }
 }

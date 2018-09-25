@@ -15,7 +15,7 @@ export const actions = {
 
 type DoorAction = ActionType<typeof actions>;
 
-const enum WarningLevel {
+export const enum WarningLevel {
   NONE,
   LOW,
   MEDIUM,
@@ -29,7 +29,7 @@ export interface DoorState {
 
 const initialState: DoorState = {
   openSince: undefined,
-  warningLevel: WarningLevel.NONE
+  warningLevel: WarningLevel.HIGH
 };
 
 export const doorReducer: Reducer<DoorState> = (

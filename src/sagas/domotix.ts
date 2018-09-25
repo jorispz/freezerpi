@@ -29,6 +29,8 @@ export function* domotixSaga(url: string) {
           }
         }
       );
+    } else {
+      logger.info("Now change in door state, not posting to Domotix");
     }
     wasOpen = isOpen;
     yield take();
