@@ -10,10 +10,12 @@
     "watch": "tsc --watch"
   },
   "devDependencies": {
-    "@types/node": "^10.9.4",
+    "@types/node": "^10.11.0",
     "@types/nodemailer": "^4.6.5",
     "@types/pigpio": "^0.4.2",
     "@types/pino": "^5.6.0",
+    "@types/request": "^2.47.1",
+    "@types/ws": "^6.0.1",
     "typescript": "^3.0.3"
   },
   "dependencies": {
@@ -25,7 +27,9 @@
     "pino-pretty": "^2.2.1",
     "redux": "^4.0.0",
     "redux-saga": "^0.16.0",
-    "typesafe-actions": "^2.0.4"
+    "request": "^2.88.0",
+    "typesafe-actions": "^2.0.4",
+    "ws": "^6.0.0"
   },
   "optionalDependencies": {
     "pigpio": "^1.1.2"

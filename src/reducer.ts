@@ -28,7 +28,7 @@ export interface DoorState {
 }
 
 const initialState: DoorState = {
-  openSince: new Date(2018, 9, 23),
+  openSince: undefined,
   warningLevel: WarningLevel.NONE
 };
 

@@ -11,7 +11,6 @@ const sagaMiddleware = createSagaMiddleware({ logger: sagaLogger });
 const store = createStore(doorReducer, applyMiddleware(sagaMiddleware));
 const rootTask = sagaMiddleware.run(rootSaga);
 
-setTimeout(() => logger.info("Done"), 10000);
 
 const shutdown = () => {
   logger.info("Shutting down");
