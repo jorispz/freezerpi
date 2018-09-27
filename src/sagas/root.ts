@@ -1,22 +1,26 @@
-import { select, take, fork } from "redux-saga/effects";
+import { select, call, take, fork } from "redux-saga/effects";
 import { DoorState } from "../reducer";
 import { doorSaga } from "./door";
-import { domotixSaga } from "./domotix";
 import { logger } from "../logger";
-import envalid, { str } from "envalid";
 import { buzzerSaga } from "./buzzer";
-
-const env = envalid.cleanEnv(process.env, {
-  FPI_DOMOTIX_URL: str()
-});
+import { Task } from "redux-saga";
+import { timerSaga } from "./timer";
 
 export function* rootSaga() {
-  yield fork(domotixSaga, env.FPI_DOMOTIX_URL);
   yield fork(doorSaga);
   yield fork(buzzerSaga);
+  let timerTask: Task | undefined = undefined;
   while (true) {
-    yield select((state: DoorState) => state.openSince);
-    const action = yield take();
-    logger.info(`Action`, action);
+    const isOpen = yield select((state: DoorState) => !!state.openSince);
+    if (isOpen && timerTask === undefined) {
+      logger.info("Door has opened, starting timer saga");
+      timerTask = yield fork(timerSaga);
+    }
+    if (!isOpen && timerTask !== undefined) {
+      logger.info("Door is closed, canceling timer saga");
+      timerTask.cancel();
+      timerTask = undefined;
+    }
+    yield take();
   }
 }

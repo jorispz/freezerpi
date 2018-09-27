@@ -1,5 +1,6 @@
 import { DoorSensor, Buzzer, FreezerIO } from "..";
 import WebSocket from "ws";
+import { logger } from "../../logger";
 
 export type DoorCallback = (isOpen: boolean) => void;
 
@@ -13,7 +14,7 @@ const mockSensor: DoorSensor = {
 
 const mockBuzzer: Buzzer = {
   buzz(level: number, durationMS: number) {
-    console.log(`BUZZ(${level}, ${durationMS})`);
+    logger.info(`BUZZ(${level}, ${durationMS})`);
   }
 };
 

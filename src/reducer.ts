@@ -29,7 +29,7 @@ export interface DoorState {
 
 const initialState: DoorState = {
   openSince: undefined,
-  warningLevel: WarningLevel.HIGH
+  warningLevel: WarningLevel.NONE
 };
 
 export const doorReducer: Reducer<DoorState> = (

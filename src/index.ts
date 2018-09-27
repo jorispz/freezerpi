@@ -4,7 +4,6 @@ import { rootSaga } from "./sagas/root";
 
 import { logger, sagaLogger } from "./logger";
 import { doorReducer } from "./reducer";
-import { buzzer } from "./gpio/rpi/buzzer";
 
 logger.info("Booting FreezerPI");
 

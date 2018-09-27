@@ -1,7 +1,7 @@
 import { put, call, select, take, fork } from "redux-saga/effects";
 import { DoorState, WarningLevel } from "../reducer";
 import { Task, delay } from "redux-saga";
-import { buzzer } from "../gpio/rpi/buzzer";
+import { io } from "../gpio";
 
 export function* buzzerSaga() {
   let previousLevel: WarningLevel | undefined = undefined;
@@ -17,13 +17,13 @@ export function* buzzerSaga() {
     }
     switch (currentLevel) {
       case WarningLevel.LOW:
-        currentTask = yield fork(buzz, 0.5, 2000);
+        currentTask = yield fork(buzz, 0.3, 10000);
         break;
       case WarningLevel.MEDIUM:
-        currentTask = yield fork(buzz, 0.5, 1000);
+        currentTask = yield fork(buzz, 0.5, 3000);
         break;
       case WarningLevel.HIGH:
-        currentTask = yield fork(buzz, 0.9, 250);
+        currentTask = yield fork(buzz, 0.9, 500);
         break;
     }
     previousLevel = currentLevel;
@@ -34,10 +34,10 @@ export function* buzzerSaga() {
 export function* buzz(level: number, delayMS: number) {
   try {
     while (true) {
-      yield call([buzzer, "buzz"], level, 75);
+      yield call([io.buzzer, "buzz"], level, 75);
       yield call(delay, delayMS);
     }
   } finally {
-    buzzer.buzz(0, 10);
+    io.buzzer.buzz(0, 10);
   }
 }
