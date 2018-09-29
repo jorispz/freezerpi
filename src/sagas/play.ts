@@ -4,6 +4,8 @@ import { io } from "../gpio";
 import { logger } from "../logger";
 import { delay } from "redux-saga";
 
+const dutyCycle = 0.1;
+
 export function* play(rtttl: string) {
   try {
     const song = parse(rtttl);
@@ -11,7 +13,7 @@ export function* play(rtttl: string) {
       const note = song.melody[i];
       logger.debug(note);
       if (note.frequency !== 0) {
-        yield call([io.buzzer, "buzz"], 0.1, note.frequency);
+        yield call([io.buzzer, "buzz"], dutyCycle, note.frequency);
       } else {
         yield call([io.buzzer, "buzz"], 0, 440);
       }
