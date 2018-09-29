@@ -13,8 +13,8 @@ const mockSensor: DoorSensor = {
 };
 
 const mockBuzzer: Buzzer = {
-  buzz(level: number, durationMS: number, frequency: number) {
-    logger.info(`BUZZ(${level}, ${durationMS}, ${frequency})`);
+  buzz(level: number, frequency: number) {
+    logger.info(`BUZZ(${level}, ${frequency})`);
   }
 };
 

@@ -2,7 +2,6 @@ import { select, call, take, fork } from "redux-saga/effects";
 import { DoorState } from "../reducer";
 import { doorSaga } from "./door";
 import { logger } from "../logger";
-import { buzzerSaga } from "./buzzer";
 import { Task } from "redux-saga";
 import { timerSaga } from "./timer";
 import { play } from "./play";
@@ -10,7 +9,6 @@ import { play } from "./play";
 export function* rootSaga() {
   yield fork(play, "batman:d=8,o=5,b=180:b,b,a#,a#,a,a,a#,a#,b,b,a#,a#,a,a,a#,a#,4b,p,4b");
   yield fork(doorSaga);
-  yield fork(buzzerSaga);
   let timerTask: Task | undefined = undefined;
   while (true) {
     const isOpen = yield select((state: DoorState) => !!state.openSince);
