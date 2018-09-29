@@ -34,10 +34,10 @@ export function* buzzerSaga() {
 export function* buzz(level: number, delayMS: number) {
   try {
     while (true) {
-      yield call([io.buzzer, "buzz"], level, 75);
+      yield call([io.buzzer, "buzz"], level, 75, 880);
       yield call(delay, delayMS);
     }
   } finally {
-    io.buzzer.buzz(0, 10);
+    io.buzzer.buzz(0, 10, 0);
   }
 }

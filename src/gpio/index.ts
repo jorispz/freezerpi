@@ -1,5 +1,5 @@
 export interface Buzzer {
-  buzz(level: number, durationMS: number): void;
+  buzz(level: number, durationMS: number, frequency: number): void;
 }
 
 export interface DoorSensor {

@@ -644,6 +644,10 @@ retry-axios@0.3.2, retry-axios@^0.3.2:
   version "0.3.2"
   resolved "https://registry.yarnpkg.com/retry-axios/-/retry-axios-0.3.2.tgz#5757c80f585b4cc4c4986aa2ffd47a60c6d35e13"
 
+rtttl-parse@^1.3.1:
+  version "1.3.1"
+  resolved "https://registry.yarnpkg.com/rtttl-parse/-/rtttl-parse-1.3.1.tgz#8623b3e9e3462f7a26baf548a25a7f5ced20abc4"
+
 safe-buffer@^5.0.1, safe-buffer@^5.1.2, safe-buffer@~5.1.0:
   version "5.1.2"
   resolved "https://registry.yarnpkg.com/safe-buffer/-/safe-buffer-5.1.2.tgz#991ec69d296e0313747d59bdfd2b745c35f8828d"
