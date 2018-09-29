@@ -11,7 +11,7 @@ export function* play(rtttl: string) {
     const song = parse(rtttl);
     for (let i = 0; i < song.melody.length; ++i) {
       const note = song.melody[i];
-      logger.debug(note);
+      logger.debug("Playing note", note);
       if (note.frequency !== 0) {
         yield call([io.buzzer, "buzz"], dutyCycle, note.frequency);
       } else {

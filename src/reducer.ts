@@ -3,58 +3,30 @@ import { action, ActionType } from "typesafe-actions";
 
 const enum DoorActionType {
   DOOR_OPENED = "DOOR_OPENED",
-  DOOR_CLOSED = "DOOR_CLOSED",
-  ESCALATE = "ESCALATE"
+  DOOR_CLOSED = "DOOR_CLOSED"
 }
 
 export const actions = {
   doorClosed: () => action(DoorActionType.DOOR_CLOSED),
-  doorOpened: () => action(DoorActionType.DOOR_OPENED),
-  escalate: () => action(DoorActionType.ESCALATE)
+  doorOpened: () => action(DoorActionType.DOOR_OPENED)
 };
 
 type DoorAction = ActionType<typeof actions>;
 
-export const enum WarningLevel {
-  NONE,
-  LOW,
-  MEDIUM,
-  HIGH
-}
-
 export interface DoorState {
   openSince: Date | undefined;
-  warningLevel: WarningLevel;
 }
 
 const initialState: DoorState = {
-  openSince: undefined,
-  warningLevel: WarningLevel.NONE
+  openSince: undefined
 };
 
-export const doorReducer: Reducer<DoorState> = (
-  state = initialState,
-  action: DoorAction
-) => {
+export const doorReducer: Reducer<DoorState> = (state = initialState, action: DoorAction) => {
   switch (action.type) {
     case DoorActionType.DOOR_OPENED:
-      return { openSince: new Date(), warningLevel: WarningLevel.LOW };
+      return { openSince: new Date() };
     case DoorActionType.DOOR_CLOSED:
       return initialState;
-    case DoorActionType.ESCALATE:
-      if (state.openSince === undefined) {
-        console.log("Can't escalate because door is closed");
-        return state;
-      } else {
-        switch (state.warningLevel) {
-          case WarningLevel.NONE:
-            return { ...state, warningLevel: WarningLevel.LOW };
-          case WarningLevel.LOW:
-            return { ...state, warningLevel: WarningLevel.MEDIUM };
-          case WarningLevel.MEDIUM:
-            return { ...state, warningLevel: WarningLevel.HIGH };
-        }
-      }
   }
   return state;
 };
