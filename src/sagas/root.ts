@@ -4,9 +4,13 @@ import { doorSaga } from "./door";
 import { logger } from "../logger";
 import { Task } from "redux-saga";
 import { alarmSaga } from "./alarm";
-import { play } from "./play";
+import http from "http";
 
 export function* rootSaga() {
+  yield call(
+    [http, "get"],
+    "localhost:5005/Woonkamer/say/Het waarchuwingssysteem voor de deur van de vriezer is operationeel/nl-nl/60"
+  );
   yield fork(doorSaga);
 
   let alarmTask: Task | undefined = undefined;
