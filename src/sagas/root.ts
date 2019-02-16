@@ -9,7 +9,7 @@ import http from "http";
 export function* rootSaga() {
   yield call(
     [http, "get"],
-    "localhost:5005/Woonkamer/say/Het waarchuwingssysteem voor de deur van de vriezer is operationeel/nl-nl/60"
+    "http://localhost:5005/Woonkamer/say/Het waarchuwingssysteem voor de deur van de vriezer is operationeel/nl-nl/60"
   );
   yield fork(doorSaga);
 

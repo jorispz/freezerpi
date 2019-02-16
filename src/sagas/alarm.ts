@@ -19,7 +19,10 @@ export function* alarmSaga() {
     yield call(play, "alert:d=4,o=6,b=635:a,b,c7,b,a,b,c7,b,a");
     for (let i = 0; i < 50; ++i) {
       yield call(delay, 2000);
-      yield call([http, "get"], "localhost:5005/sayall/Waarschuwing. De deur van de vriezer staat open/nl-nl/60");
+      yield call(
+        [http, "get"],
+        "http://localhost:5005/sayall/Waarschuwing. De deur van de vriezer staat open/nl-nl/60"
+      );
       yield call(play, "alert:d=4,o=6,b=635:a,b,c7,b,a,b,c7,b,a");
     }
     yield call(sendWarningMail);
