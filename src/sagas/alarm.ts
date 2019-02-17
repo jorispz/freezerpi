@@ -18,15 +18,21 @@ export function* alarmSaga() {
     yield call(delay, 5000);
     yield call(play, "alert:d=4,o=6,b=635:a,b,c7,b,a,b,c7,b,a");
     for (let i = 0; i < 50; ++i) {
-      yield call(delay, 2000);
-      yield call(
-        [http, "get"],
-        "http://localhost:5005/sayall/Waarschuwing. De deur van de vriezer staat open/nl-nl/60"
-      );
-      yield call(play, "alert:d=4,o=6,b=635:a,b,c7,b,a,b,c7,b,a");
+      yield fork(playWarningInRoom, "Woonkamer");
+      yield fork(playWarningInRoom, "Douche");
+      yield fork(playWarningInRoom, "Slaapkamer");
+      yield call(delay, 8000);
+      // yield call(play, "alert:d=4,o=6,b=635:a,b,c7,b,a,b,c7,b,a");
     }
     yield call(sendWarningMail);
   } finally {
     yield call(play, "close:d=4,o=6,b=635:a,g,a");
   }
+}
+
+export function* playWarningInRoom(room: String) {
+  yield call(
+    [http, "get"],
+    `http://localhost:5005/${room}/say/Waarschuwing. De deur van de vriezer staat open/nl-nl/60`
+  );
 }
