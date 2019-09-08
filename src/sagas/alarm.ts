@@ -18,9 +18,10 @@ export function* alarmSaga() {
     yield call(delay, 5000);
     yield call(play, "alert:d=4,o=6,b=635:a,b,c7,b,a,b,c7,b,a");
     for (let i = 0; i < 60; ++i) {
-      yield fork(playWarningInRoom, "Woonkamer", i);
-      yield fork(playWarningInRoom, "Douche", i);
-      yield fork(playWarningInRoom, "Slaapkamer", i);
+      const volume = 30 + i / 2;
+      yield fork(playWarningInRoom, "Woonkamer", volume);
+      yield fork(playWarningInRoom, "Douche", volume);
+      yield fork(playWarningInRoom, "Slaapkamer", volume);
       yield call(delay, 8000);
       // yield call(play, "alert:d=4,o=6,b=635:a,b,c7,b,a,b,c7,b,a");
     }
