@@ -2,8 +2,13 @@
     "editor.formatOnSave": true,
     "editor.formatOnPaste": true,
     "workbench.colorCustomizations": {
-        "activityBar.background": "#362060",
-        "titleBar.activeBackground": "#4B2D86",
-        "titleBar.activeForeground": "#FCFBFE"
-    }
+        "titleBar.activeBackground": "#20133a",
+        "titleBar.inactiveBackground": "#20133a99",
+        "titleBar.activeForeground": "#e7e7e7",
+        "titleBar.inactiveForeground": "#e7e7e799",
+        "statusBar.background": "#20133a",
+        "statusBarItem.hoverBackground": "#352060",
+        "statusBar.foreground": "#e7e7e7"
+    },
+    "peacock.color": "#20133a"
 }
