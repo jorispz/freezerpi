@@ -17,6 +17,7 @@ export function* alarmSaga() {
     yield call(play, "remind:d=4,o=6,b=635:a,g,a");
     yield call(delay, 5000);
     yield call(play, "alert:d=4,o=6,b=635:a,b,c7,b,a,b,c7,b,a");
+    yield call(delay, 5000);
     for (let i = 0; i < 60; ++i) {
       const volume = 30 + i / 2;
       yield fork(playWarningInRoom, "Woonkamer", volume);
